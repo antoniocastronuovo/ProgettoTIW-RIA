@@ -1,0 +1,425 @@
+<!doctype html>
+<html>
+
+<head>
+<!-- Required meta tags -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="css/mystyle.css">
+
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"> 
+
+<!-- Application scripts -->
+<script src="scripts/utils.js" charset="utf-8" defer></script>
+<script src="scripts/teacherCourses.js" charset="utf-8" defer></script>
+<script src="scripts/examSession.js" charset="utf-8" defer></script>
+<script src="scripts/teacherModals.js" charset="utf-8" defer></script>
+<script src="scripts/teacherManagement.js" charset="utf-8" defer></script>
+<script src="scripts/sort.js" charset="utf-8" defer></script>
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+	crossorigin="anonymous"></script>
+
+<title>PoliOnline - Home</title>
+
+</head>
+
+<body>
+	<!-- Modal of single grade detail -->
+	<div  id="gradeModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="gradeModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-xl" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="gradeModalLabel">Dettaglio valutazione</h5>
+					<button id="xBtn" type="button" class="close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form>
+					<div class="modal-body">
+						<div class="container-fluid  align-middle">
+						
+							<div class="row d-flex justify-content-center">
+								<div class="col-md-12">
+									<div class="row z-depth-3">
+										<div class="col-md-4 bg-secondary rounded-left">
+											<div class="card-block text-center text-white">
+												<i class="fas fa-user-tie fa-7x mt-5"></i>
+												<h2	id="fullName" class="font-weight-bold mt-4">Alberto Angela</h2>
+												<p id="pc">10999999</p>
+											</div>
+										</div>
+										<div class="col-md-8 bg-light rounded-right">
+											<h3 class="text-center">Informazioni</h3>
+											<hr class="badge-primary mt-0 w-25">
+											<div class="row">
+												<div class="col-sm-6">
+													<p class="font-weight-bold">Email:</p>
+													<h6 id="mail" class="text-muted">name.surname@mail.com</h6>
+												</div>
+												<div class="col-sm-6">
+													<p class="font-weight-bold">Matricola</p>
+													<h6 id="matricola" class="text-muted">949494</h6>
+												</div>
+											</div>
+											<h4 class="mt-3">Esame</h4>
+											<hr class="badge-primary">
+											<div class="row">
+												<div class="col-sm-6">
+													<p class="font-weight-bold">Corso</p>
+													<h6 id="courseName" class="text-muted">Corso</h6>
+												</div>
+												<div class="col-sm-6">
+													<p class="font-weight-bold">Data</p>
+													<h6 id="examDate" class="text-muted">12-03-2030 14:00</h6>
+												</div>
+											</div>
+				
+											<h4 class="mt-3">Valutazione</h4>
+											<hr class="bg-primary">
+											<div class="row mb-3">
+												<div class="col-sm-6">
+													<p class="font-weight-bold">Stato</p>
+													<h6 id="gradeStatus" class="text-muted">INSERITO</h6>
+												</div>
+												<div class="col-sm-6">
+													<p class="font-weight-bold">Voto</p>
+													<!-- Show h6 if grades is not editable -->
+													<h6 id="gradeConfirmed" class="text-muted">30</h6>
+													<select id="gradeSelect" class="custom-select" name="grade" id="grade">
+														<!-- Questo è il voto attuale se esiste -->
+														<option id="selectedGrade">GRADE</option>
+														<option value="31">30L</option>
+														<option value="30">30</option>
+														<option value="29">29</option>
+														<option value="28">28</option>
+														<option value="27">27</option>
+														<option value="26">26</option>
+														<option value="25">25</option>
+														<option value="24">24</option>
+														<option value="23">23</option>
+														<option value="22">22</option>
+														<option value="21">21</option>
+														<option value="20">20</option>
+														<option value="19">19</option>
+														<option value="18">18</option>
+														<option value="-2">RIMANDATO</option>
+														<option value="-1">RIPROVATO</option>
+														<option value="-3">ASSENTE</option>
+													</select>
+												</div>
+												<input id="personCodeHidden" type="hidden" name="personCode" />
+												<input id="examDateHidden" type="hidden" name="date" />
+												<input id="courseHidden" type="hidden" value="" name="course" />
+											</div>
+											<div class="row mt-3">
+												<div class="col-sm-12">
+													<div id="gradeSuccess" class="alert alert-success" role="alert" style="display: none;">Voto aggiornato!</div>
+												</div>
+											</div>
+											<div class="row mt-3">
+												<div class="col-sm-12">
+													<div id="gradeError" class="alert alert-danger" role="alert" style="display: none;"><strong>Attenzione!</strong> Il voto inserito non è valido.</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button id="closeBtn" type="button" class="btn btn-secondary">Chiudi</button>
+					<button id="changeGradeBtn" type="button" class="btn btn-primary">Salva modifica</button>
+				</div>
+			</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal of the report detail -->
+	<div  id="reportModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="gradeModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-xl" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="gradeModalLabel">Dettaglio valutazione</h5>
+					<button id="xBtn" type="button" class="close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form>
+					<div class="modal-body">
+						<div class="container align-middle">
+							<div class="card bg-secondary text-white">
+								<div class="card-body">
+									<h5 id="reportTitle" class="card-title" >Verbale Analisi 1 - 27/01/2020 14:00</h5>
+									<p id="reportSubTitle" class="card-text" >Data verbalizzazione: 30/01/2020 9:00</p>
+									<table class="table table-striped table-hover table-bordered table-responsive-lg bg-light">
+										<thead>
+											<tr>
+												<th scope="col" >Matricola</th>
+												<th scope="col" >LastName</th>
+												<th scope="col" >FirstName</th>
+												<th scope="col" >Email</th>
+												<th scope="col" >Degree course</th>
+												<th scope="col" >Grade</th>
+											</tr>
+										</thead>
+										<tbody id="bodyModalReport">
+											<tr >
+												<td >22</td>
+												<td >Kakà</td>
+												<td >Ricardo</td>
+												<td >ricky.kaka@mail.com</td>
+												<td >Centrocampista</td>
+												<td >30L</td>
+											</tr>
+											<tr>
+												<td>22</td>
+												<td>Kakà</td>
+												<td>Ricardo</td>
+												<td>ricky.kaka@mail.com</td>
+												<td>Centrocampista</td>
+												<td>30L</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button id="closeBtn" type="button" class="btn btn-secondary">Chiudi</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal of multiple insertion -->
+	<div  id="insertModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="insertModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-xl" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="insertModalLabel">Inserimento multiplo</h5>
+					<button id="insertXBtn" type="button" class="close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div id="insertContainer">
+						<div id="noGradesAlert" class="alert alert-primary" role="alert" style="display: none;">
+							Tutti i voti sono stati inseriti.
+						</div>
+						<div id="errorGradesAlert" class="alert alert-danger" role="alert" style="display: none;">
+							Non tutti i voti sono stati correttamente inseriti. Riprova.
+						</div>
+						<table id="insertGradesTable" class="table table-striped table-hover table-bordered table-responsive-lg bg-light">
+							<thead>
+								<tr>
+									<th id="matricola_id" scope="col" class="sortable">Matricola<span hidden> &uarr;</span><span hidden> &darr;</span></th>
+									<th id="lastname_id" scope="col" class="sortable">Cognome<span hidden> &uarr;</span><span hidden> &darr;</span></th>
+									<th id="firstname_id"scope="col" class="sortable">Nome<span hidden> &uarr;</span><span hidden> &darr;</span></th>
+									<th id="email_id" scope="col" class="sortable">Email<span hidden> &uarr;</span><span hidden> &darr;</span></th>
+									<th id="degree_id" scope="col" class="sortable">Corso di laurea<span hidden> &uarr;</span><span hidden> &darr;</span></th>
+									<th id="grade_id" scope="col" class="sortable">Voto<span hidden> &uarr;</span><span hidden> &darr;</span></th>
+									<th id="status_id" scope="col" class="text-center sortable">Stato<span hidden> &uarr;</span><span hidden> &darr;</span></th>
+								</tr>
+							</thead>
+							<tbody id="insertList">
+								<tr>
+									<td>22</td>
+									<td>Kakà</td>
+									<td>Ricardo</td>
+									<td>ricky.kaka@mail.co</td>
+									<td>CS</td>
+									<td><select class="custom-select" name="grade" id="grade">
+										<option disabled="disabled">Scegli voto</option>
+										<option value="30">30</option>
+										<option value="29">29</option>
+										<option value="28">28</option>
+										<option value="27">27</option>
+										<option value="26">26</option>
+										<option value="25">25</option>
+										<option value="24">24</option>
+										<option value="23">23</option>
+										<option value="22">22</option>
+										<option value="21">21</option>
+										<option value="20">20</option>
+										<option value="19">19</option>
+										<option value="18">18</option>
+										<option value="-2">RIMANDATO</option>
+										<option value="-1">RIPROVATO</option>
+										<option value="-3">ASSENTE</option>
+									</select></td>
+									<td class="table-warning text-center">NON INSERITO</td>
+								</tr>
+							</tbody>
+						</table>
+						<div id="progressSection" class="progress" style="visibility: hidden;">
+							<div id="progressBar" class="progress-bar progress-bar-striped" role="progressbar" style="width: 0%"></div>
+						  </div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button id="insertCloseBtn" type="button" class="btn btn-secondary">Chiudi</button>
+					<button id="sendGradesBtn" type="button" class="btn btn-primary">Invia</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#"> <img src="images/logo.png" width="30" height="30"	class="d-inline-block align-top" alt=""> PoliOnLine	</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"	data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarText">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link"	href="TeacherHome.html">Home <span
+						class="sr-only">(current)</span></a></li>
+				<li class="nav-item"><a class="nav-link" href="Logout">Logout</a></li>
+			</ul>
+			<span id="teacherName" class="navbar-text"> Insegnante </span>
+		</div>
+	</nav>
+	<div class="container align-middle mt-3">
+		<div class="card bg-secondary text-white">
+			<div id="coursesContainer" class="card-body">
+				<h5 class="card-title font-weight-bold" id="title">
+					Corsi insegnati da Stephen Hawking
+				</h5>
+				<div id="errorAlert" class="alert alert-danger" role="alert">
+					Error!
+				</div>
+				<div id="okAlert" class="alert alert-success" role="alert">
+					Success!
+				</div>
+				<div id="coursesList" class="list-group" th:remove="all-but-first">
+					<div class="list-group-item list-group-item-action flex-column align-items-start">
+						<div class="d-flex justify-content-between">
+							<a href="teacherhome.html">
+								<h5 class="mb-1">234 - Fisica tecnica</h5>
+							</a> <span class="badge badge-secondary">7 appelli</span>
+						</div>
+						<p class="mb-1">Fornire i
+							fondamenti della ingegneria termodinamica e le conoscenze di base
+							della trasmissione del calore finalizzati alla risoluzione di
+							problemi non complessi, connessi all'analisi di processi
+							termo-fluidodinamici e di sistemi energetici.</p>
+						<ul	class="list-group list-group-flush">
+							<a href="registered.html"><li class="list-group-item d-flex justify-content-between align-items-center">
+								<p>Appello del 12/01/2021 12:00<p><span class="badge badge-secondary">14 iscritti</span>
+							</li></a>
+						</ul>
+					</div>
+					<div
+						class="list-group-item list-group-item-action flex-column align-items-start">
+						<div class="d-flex justify-content-between">
+							<a href="teacherhome.html">
+								<h5 class="mb-1">234 - Fisica tecnica</h5>
+							</a> <span class="badge badge-secondary">7 appelli</span>
+						</div>
+						<p class="mb-1">Fornire i fondamenti della ingegneria
+							termodinamica e le conoscenze di base della trasmissione del calore
+							finalizzati alla risoluzione di problemi non complessi, connessi
+							all'analisi di processi termo-fluidodinamici e di sistemi
+							energetici.</p>
+					</div>
+				</div>
+				<div id="examContainer" style="display: none;">
+					<table class="table table-striped table-hover table-bordered table-responsive-lg bg-light">
+						<thead>
+							<tr>
+								<th id="matricola_id" scope="col" class="sortable">Matricola<span hidden> &uarr;</span><span hidden> &darr;</span></th>
+								<th id="lastname_id" scope="col" class="sortable">Cognome<span hidden> &uarr;</span><span hidden> &darr;</span></th>
+								<th id="firstname_id"scope="col" class="sortable">Nome<span hidden> &uarr;</span><span hidden> &darr;</span></th>
+								<th id="email_id" scope="col" class="sortable">Email<span hidden> &uarr;</span><span hidden> &darr;</span></th>
+								<th id="degree_id" scope="col" class="sortable">Corso di laurea<span hidden> &uarr;</span><span hidden> &darr;</span></th>
+								<th id="grade_id" scope="col" class="sortable">Voto<span hidden> &uarr;</span><span hidden> &darr;</span></th>
+								<th id="status_id" scope="col" class="text-center sortable">Stato<span hidden> &uarr;</span><span hidden> &darr;</span></th>
+								<th scope="col" class="text-center sortable">Azioni<span hidden> &uarr;</span><span hidden> &darr;</span></th>
+							</tr>
+						</thead>
+						<tbody id="gradesList">
+							<tr>
+								<td>22</td>
+								<td>Kakà</td>
+								<td>Ricardo</td>
+								<td>ricky.kaka@mail.co</td>
+								<td>CS</td>
+								<td>30L</td>
+								<td class="table-warning text-center">PUBBLICATO</td>
+								<td><a href="#"><button type="button"
+											class="btn btn-primary" style="width: 100%;">Edit</button></a></td>
+							</tr>
+						</tbody>
+					</table>
+				
+					<!-- Action buttons -->
+					<div id="buttonsSection">
+						<a id="multipleInsertBtn" href="#"><button	type="button" class="btn btn-success">INSERIMENTO MULTIPLO</button></a>
+						<a id="publishBtn" href="#"><button	type="button" class="btn btn-success">PUBBLICA</button></a>
+						<a id="reportBtn" href="#"><button type="button" class="btn btn-success">VERBALIZZA</button></a>
+						<a id="backBtn" href="TeacherHome.html"><button type="button" class="btn btn-success">TORNA AI CORSI</button></a>
+					</div>
+					<!-- Exam reports -->
+					<div id="reportsContainer" class="col-md-8 offset-md-2 mt-3">					
+						<table id="reportsTable" class="table table-striped table-hover table-bordered table-responsive-lg bg-light">
+							<thead>
+								<tr>
+									<th scope="col">ID Verbale</th>
+									<th scope="col">Data verbalizzazione</th>
+									<th scope="col">Azioni</th>
+								</tr>
+							</thead>
+							<tbody id="reportsTableBody">
+								<tr>
+									<td>2</td>
+									<td>14/03/202 13:00:00</td>
+									<td><a href="#">
+											<button type="button" class="btn btn-primary" style="width: 100%;">Dettaglio</button>
+									</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+</body>
+
+<!-- Footer -->
+<footer class="bg-light text-center text-lg-start fixed-bottom">
+	<!-- Copyright -->
+	<div class="text-center p-2" style="background-color: rgba(0, 0, 0, 0.2);">Progetto TIW 2021 - Gruppo 27</div>
+	<!-- Copyright -->
+</footer>
+<!-- Footer -->
+</html>

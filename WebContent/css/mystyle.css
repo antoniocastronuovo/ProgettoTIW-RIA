@@ -1,0 +1,36 @@
+@charset "ISO-8859-1";
+
+body {
+	background-image: url('../images/background_body.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+a, a:focus, a:active {
+      text-decoration: none;
+      color: inherit;
+ }
+ 
+ .card-body {
+ 	padding: 0.75rem;
+ }
+ 
+ th.sortable, .up, .down {
+	cursor: pointer;
+}
+ 
+.boldarrow{
+	color: red;
+	font-weight: bold;
+}
+
+.normalarrow{
+	color: black;
+	font-weight: normal;
+}
+
+.modal-body {
+		max-height: calc(100vh - 210px);
+		overflow-y: auto;
+	}
